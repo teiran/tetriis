@@ -11,6 +11,7 @@ pikkuhiljaa tai valitsemalla pelin alussa (pelin nopeuden säätäminen).
 * pelin aloittaminen
 * tetris palikan liikuttaminen
 * tetris palikan kääntäminen
+* tulosten ja parhaan tuloksen tarkastelu
 * Uudelleen pelaaminen
 
 
@@ -20,6 +21,7 @@ pikkuhiljaa tai valitsemalla pelin alussa (pelin nopeuden säätäminen).
   * tetris palikoiden liikuttaminen
   * tetris palikoiden kääntäminen
  * uudelleen pelaaminen
+ * tuloksen tarkasetelu
  
 
   
