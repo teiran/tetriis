@@ -10,15 +10,18 @@ pikkuhiljaa tai valitsemalla pelin alussa (pelin nopeuden säätäminen).
 * peliin kirjautuminen
 * pelin aloittaminen
 * tetris palikan liikuttaminen
+* tetris palikan kääntäminen
+* tulosten ja parhaan tuloksen tarkastelu
 * Uudelleen pelaaminen
-* Ylläpitäminen
+
 
 **Pelaajan toiminnot**
  * peliin kirjautuminen
  * pelin aloittaminen
   * tetris palikoiden liikuttaminen
+  * tetris palikoiden kääntäminen
  * uudelleen pelaaminen
+ * tuloksen tarkasetelu
  
- **Ylläpitäjän toiminnot**
- * Pelin ylläpitäminen
+
   
