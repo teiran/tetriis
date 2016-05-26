@@ -25,7 +25,6 @@ pikkuhiljaa tai valitsemalla pelin alussa (pelin nopeuden säätäminen).
  * 
  
 
-
- ![oliokaavio](https://github.com/teiran/tetriis/blob/master/documentaatio/Oliokaavio1.pdf)
+##![oliokaavio](https://github.com/teiran/tetriis/blob/master/documentaatio/Oliokaavio1.pdf)
 
   
