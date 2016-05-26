@@ -22,6 +22,10 @@ pikkuhiljaa tai valitsemalla pelin alussa (pelin nopeuden säätäminen).
   * tetris palikoiden kääntäminen
  * uudelleen pelaaminen
  * tuloksen tarkasetelu
+ * 
  
+
+
+ ![oliokaavio](https://github.com/teiran/tetriis/blob/master/documentaatio/Oliokaavio1.pdf)
 
   
