@@ -21,14 +21,24 @@ public class Tetrispalikka {
     }
     
     public int[][] luopalikka(){
-        int t = (int)(Math.random()*6);
+        int t = (int)(Math.random()*7-1);//keksin jostain myöhemmin paremman random muutujan
         int[][] k = new int[2][5];
         for (int x = 0; x < 2; x++) {
             for (int y = 0; y < 5; y++) {
                 k[x][y] = 0;
             }
         }
-            switch (t) {
+        luoPalikka2(t, k);
+            
+        return k;
+    }
+
+    public int[][] getTetrispalikka() {
+        return tetrispalikka;
+    }
+
+    private void luoPalikka2(int x, int[][] k){
+        switch (x) {
             case 0:  //neliö 
                     k[0][0]= 1;
                     k[0][1]= 1;
@@ -42,7 +52,7 @@ public class Tetrispalikka {
                     k[1][2]= 1;
                     break;
             case 2:  // suora
-                    for (int y = 0; y < 5; y++) {
+                    for (int y = 0; y < 4; y++) {
                         k[0][y] = 1;
                     }
                     break;
@@ -70,13 +80,11 @@ public class Tetrispalikka {
                     k[1][1]= 1;
                     k[0][2]= 1;
                     break;
-        }
-        return k;
     }
-
-    public int[][] getTetrispalikka() {
-        return tetrispalikka;
+        
     }
+    
+ 
     
     
 }
