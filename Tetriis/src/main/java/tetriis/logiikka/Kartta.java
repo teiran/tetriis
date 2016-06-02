@@ -14,6 +14,7 @@ import tetriis.logiikka.Tetrispalikka;
 public class Kartta {
     private int[][] kartta;
     private int[][] vanhatpalkat;
+    private Tetrispalikka palikka;
 
     public Kartta() {
         kartta = luouusikarrtta();
@@ -37,13 +38,20 @@ public class Kartta {
         this.vanhatpalkat = vanhatpalkat;
     }
 
+    public Tetrispalikka getPalikka() {
+        return palikka;
+    }
+
+   
+    
+
     
     
     public void tallennakartat() { // tallentaa uudenpalikan karttaan
         int[][] uusvanhakartta = luouusikarrtta();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 30; y++) {
-                if (kartta[x][y] == 1 || vanhatpalkat[x][y] == 1) {
+                if (kartta[x][y] == 1 || vanhatpalkat[x][y] == 1 || kartta[x][y] == 2) { 
                     uusvanhakartta[x][y] = 1;
                 } else {
                     uusvanhakartta[x][y] = 0;
@@ -51,7 +59,27 @@ public class Kartta {
             }
         }
         vanhatpalkat = uusvanhakartta;
-    }    
+        onkotaysirivi();
+    }
+
+    private void onkotaysirivi(){
+        int[][] k = luouusikarrtta();
+        for (int x = 0; x < 10; x++) {
+            boolean onkorivitaysi = true;
+            for (int y = 0; y < 30; y++) {
+                if (vanhatpalkat[x][y] == 0) {
+                    onkorivitaysi = false;
+                }
+            }
+            if (onkorivitaysi) {
+                for (int y = 0; y < 30; y++) {
+                    k[x][y] =  vanhatpalkat[x][y];
+                }
+            }
+        }
+        vanhatpalkat = k;
+        
+    }
     
   
     
@@ -65,12 +93,15 @@ public class Kartta {
         return kartta2;
     }
 
-    public void uusipalikka(Tetrispalikka t) {
-        int u[][] = t.getTetrispalikka();
+    public void uusipalikka() {
+        palikka = new Tetrispalikka();
+        int u[][] = palikka.getTetrispalikka();
         for (int x = 0; x < 2; x++) { //luo kartaan uudenpalikan
             for (int y = 0; y < 5; y++) {
                 if (u[x][y] == 1) {
                     kartta[x + 4][y] = 1; //scaalaus oikeaksi
+                } else if (u[x][y] == 2) {
+                    kartta[x + 4][y] = 2; //kääntö piste
                 }
             }
         }

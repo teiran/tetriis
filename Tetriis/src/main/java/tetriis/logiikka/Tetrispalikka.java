@@ -15,23 +15,140 @@ package tetriis.logiikka;
  */
 public class Tetrispalikka {
     private int[][] tetrispalikka;
+    private String suunta;
+    private int x;
+    private int y;
 
     public Tetrispalikka() {
+        x = 2;
+        y = 5;
         tetrispalikka = luopalikka();
+        suunta = "a";
+        
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+    
+    public void kaannaoikealle(){
+        if (suunta.equals("a")) {
+            kaannao();
+            suunta = "o";
+        } else if (suunta.equals("o")) {
+            kaannao();
+            suunta = "y";
+        } else if (suunta.equals("y")) {
+            kaannao();
+            suunta = "v";
+        } else {
+            kaannao();
+            suunta = "a";
+        }
+    }
+    private void kaannav(){
+        switch (suunta) {
+            case "a":
+                {
+                    x = 5;
+                    y = 2;
+                    int[][] k = new int[x][y];
+                    for (int x1 = 0; x1 < 2; x1++) {
+                        for (int y1 = 0; y1 < 5; y1++) {
+                            k[y1][x1] = tetrispalikka[x1][y1];
+                        }
+                    }       tetrispalikka = k;
+                    break;
+                }
+            case "o":
+                {
+                    x = 2;
+                    y = 5;
+                    int[][] k = new int[x][y];
+                    for (int x1 = 0; x1 < 2; x1++) {
+                        for (int y1 = 0; y1 < 5; y1++) {
+                            k[x1][4 - y1] = tetrispalikka[y1][x1];
+                        }
+                    }       tetrispalikka = k;
+                    break;
+                }
+            case "y":
+                {
+                    x = 5;
+                    y = 2;
+                    int[][] k = new int[x][y];
+                    for (int x1 = 0; x1 < 2; x1++) {
+                        for (int y1 = 0; y1 < 5; y1++) {
+                            k[y1][x1] = tetrispalikka[x1][y1];
+                        }
+                    }       tetrispalikka = k;
+                    break;
+                }
+            default:
+                {
+                    x = 2;
+                    y = 5;
+                    int[][] k = new int[x][y];
+                    for (int x1 = 0; x1 < 2; x1++) {
+                        for (int y1 = 0; y1 < 5; y1++) {
+                            k[x1][4 - y1] = tetrispalikka[y1][x1];
+                        }
+                    }       tetrispalikka = k;
+                    break;
+                }
+        }
+        
+    }
+    
+    
+    public void kaannavasemmalle(){
+        if (suunta.equals("o")) {
+            kaannav();
+            suunta = "a";
+        } else if (suunta.equals("y")) {
+            kaannav();
+            suunta = "o";
+        } else if (suunta.equals("v")) {
+            kaannav();
+            suunta = "y";
+        } else {
+            kaannav();
+            suunta = "v";
+        }
+    }
+    private void kaannao(){
+        for (int i = 0; i < 3; i++) {
+                kaannavasemmalle();
+        }   
+    }
+    
+    
+    
+    
     
     public int[][] luopalikka(){
         int t = (int)(Math.random()*7-1);//keksin jostain myöhemmin paremman random muutujan
-        int[][] k = new int[2][5];
-        for (int x = 0; x < 2; x++) {
-            for (int y = 0; y < 5; y++) {
-                k[x][y] = 0;
+        int[][] k = new int[x][y];
+        for (int x1 = 0; x1 < x; x1++) {
+            for (int y1 = 0; y1 < y; y1++) {
+                k[x1][y1] = 0;
             }
         }
         luoPalikka2(t, k);
             
         return k;
     }
+
+    public String getSuunta() {
+        return suunta;
+    }
+    
+    
 
     public int[][] getTetrispalikka() {
         return tetrispalikka;
@@ -47,7 +164,7 @@ public class Tetrispalikka {
                     break;
             case 1: //salama oikealle
                     k[0][0]= 1;
-                    k[0][1]= 1;
+                    k[0][1]= 2;
                     k[1][1]= 1;
                     k[1][2]= 1;
                     break;
@@ -55,33 +172,49 @@ public class Tetrispalikka {
                     for (int y = 0; y < 4; y++) {
                         k[0][y] = 1;
                     }
+                    k[0][1] = 2;
                     break;
             case 3:  // l:llä oikealle
                     for (int y = 0; y < 3; y++) {
                         k[0][y] = 1;
                     }
                     k[1][2] = 1;
+                    k[0][1] = 2;
                     break;
             case 4:  // t palikka 
                     for (int i = 0; i < 3; i++) {
                         k[0][i] = 1;
                     }
                     k[1][1]= 1;
+                    k[0][1] = 2;
                     break;
-            case 5:   
+            case 5:   //l:llä vasemmalle
                     for (int i = 0; i < 3; i++) {
                         k[1][i] = 1;
                     }
                     k[0][2] = 1;
+                    k[1][1] = 2;
                     break;
             case 6:   
                     k[0][1]= 1;
                     k[1][0]= 1;
-                    k[1][1]= 1;
+                    k[1][1]= 2;
                     k[0][2]= 1;
                     break;
     }
-        
+    
+    }
+
+    @Override
+    public String toString() {
+        String g = "";
+        for (int[] is : tetrispalikka) {
+            for (int i : is) {
+                g += i;
+            }
+            g += "\n";
+        }
+        return g;
     }
     
  

@@ -16,17 +16,20 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Siirrot likeet = new Siirrot();
-        likeet.luosuusipalikka(new Tetrispalikka());
-        System.out.println(likeet);
-        System.out.println("");
-        System.out.println("");
-        for (int i = 0; i < 4; i++) {
-            likeet.liikuvasemmalle();
-            System.out.println("");
-            System.out.println("");
-            System.out.println(likeet);
-        }    
+        Siirrot k = new Siirrot();
+        k.luosuusipalikka();
+        System.out.println(k);
+        k.liikualas();
+        System.out.println(k);
+        k.liikuvasemmalle();
+        k.liikuvasemmalle();
+        k.liikuvasemmalle();
+        k.liikuvasemmalle();
+        k.liikuvasemmalle();
+        k.kaannyvasemmalle();
+        System.out.println(k);
+        
+        
     }
     
 }
