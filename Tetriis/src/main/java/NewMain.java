@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetriis.logiikka;
+
+import tetriis.logiikka.Siirrot;
 import tetriis.logiikka.Tetrispalikka;
 
 /**
@@ -17,7 +18,6 @@ public class NewMain {
      */
     public static void main(String[] args) {
         Siirrot k = new Siirrot();
-        k.luosuusipalikka();
         System.out.println(k);
         k.liikualas();
         System.out.println(k);

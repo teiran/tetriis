@@ -19,6 +19,7 @@ public class Siirrot {
 
     public Siirrot() {
         terriskartta = new Kartta();
+        terriskartta.uusipalikka();
     }
 
     @Override
@@ -26,9 +27,7 @@ public class Siirrot {
         return terriskartta.toString();
     }
 
-    public void luosuusipalikka() {
-        terriskartta.uusipalikka();
-    }
+   
 
     //oikealle liikuminen
     public void liikuoikealle() {

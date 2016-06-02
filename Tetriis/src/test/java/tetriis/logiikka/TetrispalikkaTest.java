@@ -5,6 +5,7 @@
  */
 package tetriis.logiikka;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,11 +53,63 @@ public class TetrispalikkaTest {
         assertEquals(summ1, 2 * 5);
 
     }
-
+    
     @Test
-    public void testrandom() {
-
+    public void testgetXgetY() {
+        Tetrispalikka h = new Tetrispalikka();
+        for (int i = 0; i < 4; i++) {
+            if (i%2 == 0) {
+                assertEquals(h.getX(), 2);
+                assertEquals(h.getY(), 5);
+            } else {
+                assertEquals(h.getX(), 5);
+                assertEquals(h.getY(), 2);
+            }
+            
+        }
     }
+    
+    @Test
+    public void testKaantaminenoikealle() {
+        Tetrispalikka h = new Tetrispalikka();
+        assertEquals(h.getSuunta(), "a");
+        h.kaannaoikealle();
+        assertEquals(h.getSuunta(), "o");
+        h.kaannaoikealle();
+        assertEquals(h.getSuunta(), "y");
+        h.kaannaoikealle();
+        assertEquals(h.getSuunta(), "v");
+        h.kaannaoikealle();
+        assertEquals(h.getSuunta(), "a");
+        int[][] k = h.getTetrispalikka().clone();
+        h.kaannaoikealle();
+        h.kaannaoikealle();
+        h.kaannaoikealle();
+        h.kaannaoikealle();
+        assertArrayEquals(k, h.getTetrispalikka());
+    }
+    
+    
+    @Test
+    public void testKaantaminenvasemmalle() {
+        Tetrispalikka h = new Tetrispalikka();
+        assertEquals(h.getSuunta(), "a");
+        h.kaannavasemmalle();
+        assertEquals(h.getSuunta(), "v");
+        h.kaannavasemmalle();
+        assertEquals(h.getSuunta(), "y");
+        h.kaannavasemmalle();
+        assertEquals(h.getSuunta(), "o");
+        h.kaannavasemmalle();
+        assertEquals(h.getSuunta(), "a");
+        int[][] k = h.getTetrispalikka().clone();
+        h.kaannavasemmalle();
+        h.kaannavasemmalle();
+        h.kaannavasemmalle();
+        h.kaannavasemmalle();
+        assertArrayEquals(k, h.getTetrispalikka());
+    }
+
 
     @Test
     public void testGetTetrispalikka() {
