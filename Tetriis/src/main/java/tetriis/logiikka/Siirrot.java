@@ -5,10 +5,6 @@
  */
 package tetriis.logiikka;
 
-import java.util.ArrayList;
-import tetriis.logiikka.Kartta;
-import tetriis.logiikka.Tetrispalikka;
-
 /**
  *
  * @author tiera
@@ -137,7 +133,7 @@ public class Siirrot {
         kaanny("");
     }
 
-    // käänny vasemmalle
+    // käänny   
     private void kaanny(String suunta) {
         Tetrispalikka palikka = terriskartta.getPalikka();
         int[][] uusikartta = terriskartta.luouusikarrtta();

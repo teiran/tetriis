@@ -5,7 +5,6 @@
  */
 
 import tetriis.logiikka.Siirrot;
-import tetriis.logiikka.Tetrispalikka;
 
 /**
  *
