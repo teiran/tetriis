@@ -5,8 +5,6 @@
  */
 package tetriis.logiikka;
 
-import tetriis.logiikka.Tetrispalikka;
-
 /**
  *
  * @author tiera
@@ -63,21 +61,21 @@ public class Kartta {
     }
 
     private void onkotaysirivi(){
-        int[][] k = luouusikarrtta();
-        for (int x = 0; x < 10; x++) {
+        for (int y1 = 0; y1 < 30; y1++) {
             boolean onkorivitaysi = true;
-            for (int y = 0; y < 30; y++) {
-                if (vanhatpalkat[x][y] == 0) {
+            for (int x = 0; x < 10; x++) {
+                if (vanhatpalkat[x][y1] == 0) {
                     onkorivitaysi = false;
+                    break;
                 }
             }
             if (onkorivitaysi) {
-                for (int y = 0; y < 30; y++) {
-                    k[x][y] =  vanhatpalkat[x][y];
+                for (int x = 0; x < 10; x++) {
+                     vanhatpalkat[x][y1] = 0;
                 }
             }
         }
-        vanhatpalkat = k;
+        ;
         
     }
     
