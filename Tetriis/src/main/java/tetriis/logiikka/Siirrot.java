@@ -10,17 +10,33 @@ package tetriis.logiikka;
  * @author tiera
  */
 public class Siirrot {
-
+    private boolean lopetusehot;
     private Kartta terriskartta;
 
     public Siirrot() {
         terriskartta = new Kartta();
         terriskartta.uusipalikka();
+        lopetusehot = true;
     }
 
     @Override
     public String toString() {
         return terriskartta.toString();
+    }
+    
+    public int[][] kartat(){
+        return terriskartta.molemmatkartat();
+    }
+    public boolean lopetus(){
+        return lopetusehot;
+    }
+    
+    private boolean lopetus2(){
+        int[] h = terriskartta.lopetus();
+        if (h[4]==1||h[5]==1) {
+            return false;
+        }
+        return true;
     }
 
    
@@ -108,6 +124,7 @@ public class Siirrot {
         } else {
             terriskartta.tallennakartat();
             terriskartta.uusipalikka();
+            lopetusehot = lopetus2();
         }
     }
 

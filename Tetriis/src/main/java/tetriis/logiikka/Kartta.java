@@ -40,12 +40,8 @@ public class Kartta {
         return palikka;
     }
 
-   
-    
-
-    
-    
-    public void tallennakartat() { // tallentaa uudenpalikan karttaan
+    //molemmant kartat
+    public int[][] molemmatkartat(){
         int[][] uusvanhakartta = luouusikarrtta();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 30; y++) {
@@ -56,6 +52,14 @@ public class Kartta {
                 }
             }
         }
+        return uusvanhakartta;
+    }
+    
+
+    
+    
+    public void tallennakartat() { // tallentaa uudenpalikan karttaan
+        int[][] uusvanhakartta = molemmatkartat();
         vanhatpalkat = uusvanhakartta;
         onkotaysirivi();
     }
@@ -75,8 +79,18 @@ public class Kartta {
                 }
             }
         }
-        ;
         
+        
+    }
+    
+    public int[] lopetus(){
+        int[] taydetsarakkeet = new int[10];
+        for (int i = 0; i < 10; i++) {
+            if (vanhatpalkat[i][0] == 1) {
+                taydetsarakkeet[i] = 1;
+            }
+        }
+        return taydetsarakkeet;
     }
     
   
@@ -92,6 +106,7 @@ public class Kartta {
     }
 
     public void uusipalikka() {
+        kartta = luouusikarrtta();
         palikka = new Tetrispalikka();
         int u[][] = palikka.getTetrispalikka();
         for (int x = 0; x < 2; x++) { //luo kartaan uudenpalikan
@@ -103,13 +118,15 @@ public class Kartta {
                 }
             }
         }
+        
 
     }
 
     @Override
     public String toString() {
+        int [][] k = molemmatkartat();
         String g = "";
-        for (int[] is : kartta) {
+        for (int[] is : k) {
             for (int i : is) {
                 g += i +"";
             }

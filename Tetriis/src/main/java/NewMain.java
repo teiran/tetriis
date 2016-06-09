@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
+import java.util.Scanner;
 import tetriis.logiikka.Siirrot;
+import grafiikka.LinesEx;
+
 
 /**
  *
@@ -16,19 +19,37 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Siirrot k = new Siirrot();
-        System.out.println(k);
-        k.liikualas();
-        System.out.println(k);
-        k.liikuvasemmalle();
-        k.liikuvasemmalle();
-        k.liikuvasemmalle();
-        k.liikuvasemmalle();
-        k.liikuvasemmalle();
-        k.kaannyvasemmalle();
-        System.out.println(k);
+        Scanner lu = new Scanner(System.in);
         
-        
+        Siirrot peli = new Siirrot();
+        LinesEx ex = new LinesEx(peli.kartat());
+        ex.setVisible(true);
+        boolean k = peli.lopetus();
+        while (k) {
+            System.out.println(peli);
+            System.out.println("q,e,a,s,d");
+           
+            String g = lu.nextLine();
+            
+            switch (g) {
+                case "q": peli.kaannyvasemmalle();
+                    break;
+                case "e": peli.kaannyoikealle();
+                    break;
+                case "a": peli.liikuvasemmalle();
+                    break;
+                case "s": peli.liikualas();
+                    break;
+                case "d": peli.liikuoikealle();
+                    break;
+                default: peli.liikualas();
+                    break;
+            }
+            
+            k = peli.lopetus();
+            
+        }
+
     }
-    
+
 }
