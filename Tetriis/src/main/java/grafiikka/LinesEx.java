@@ -11,17 +11,18 @@ public class LinesEx extends JFrame {
     }
     
     public void update(){
-        
+       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void initUI() {
 
-        add(new Surface(kartta));
+        add(new Grafiikka(kartta));
         
         setTitle("Lines");
         setSize(50*10+100, 50*30+100);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
     }
 
 

@@ -7,15 +7,19 @@ package grafiikka;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.Scanner;
 import javax.swing.JPanel;
-import tetriis.logiikka.Siirrot;
-
-class Surface extends JPanel {
-
-    private Siirrot kartta;
 
 
+class Grafiikka extends JPanel {
+
+    private int[][] kartta;
+
+    public Grafiikka(int[][] kartta) {
+        this.kartta = kartta;
+    }
+    public void setkartta(int[][] k){
+        this.kartta = k;
+    }
 
     private void doDrawing(Graphics g) {
 
@@ -39,55 +43,11 @@ class Surface extends JPanel {
             x1 += 30;
             x2 += 30;
         }
-        
-        Scanner lu = new Scanner(System.in);
-        
-        Siirrot peli = new Siirrot();
-        boolean k = peli.lopetus();
-        while (k) {
-            System.out.println(peli);
-            System.out.println("q,e,a,s,d");
-           
-            String f = lu.nextLine();
-            
-            switch (f) {
-                case "q": peli.kaannyvasemmalle();
-                    break;
-                case "e": peli.kaannyoikealle();
-                    break;
-                case "a": peli.liikuvasemmalle();
-                    break;
-                case "s": peli.liikualas();
-                    break;
-                case "d": peli.liikuoikealle();
-                    break;
-                default: peli.liikualas();
-                    break;
-            }
-            update(g2d);
-            k = peli.lopetus();
-            
-        }
-        
-        
-        
-        
-
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-        doDrawing(g);
-    }
-    
-    private void update(Graphics2D g2d){
-        int x1 = 30;
-        int x2 = 60;
-        int y1 = 30;
-        int y2 = 30;
-        for (int[] is : kartta.kartat()) {
+        x1 = 30;
+        x2 = 60;
+        y1 = 30;
+        y2 = 30;
+        for (int[] is : kartta) {
             for (int i : is) {
                 if (i == 1) {
                     for (int j = 0; j < 30; j++) {
@@ -109,5 +69,15 @@ class Surface extends JPanel {
             y1 += 30;
             y2 += 30;
         }
+
     }
+
+    @Override
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        doDrawing(g);
+    }
+
+
 }
