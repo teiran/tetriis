@@ -12,6 +12,12 @@ package tetriis.logiikka;
 public class Siirrot {
     private boolean lopetusehot;
     private Kartta terriskartta;
+    
+    /*
+    * luo uuden kartan
+    * kutsuu tälle uutta tetrispalikka
+    * ja laitaa lopetusehdoksi true.
+    */
 
     public Siirrot() {
         terriskartta = new Kartta();
@@ -27,6 +33,10 @@ public class Siirrot {
     public int[][] kartat(){
         return terriskartta.molemmatkartat();
     }
+    
+    /*
+    * lopetus ehdon getteri
+    */
     public boolean lopetus(){
         return lopetusehot;
     }
@@ -41,7 +51,12 @@ public class Siirrot {
 
    
 
-    //oikealle liikuminen
+    
+    /* 
+    * tutkii voiko liikua oikealle (private voikoliikuaoikealle) ja
+    * jos voi niin muokkaa karttaa niin että palikat liikuneet oikealle
+    */
+    //liikuminen oikealle
     public void liikuoikealle() {
         if (voikoliikkuaoikealle()) {
             int[][] kartta2 = terriskartta.luouusikarrtta();
@@ -72,7 +87,10 @@ public class Siirrot {
         }
         return true;
     }
-
+    /* 
+    * tutkii voiko liikua vasemmalle (private voikoliikuavasemmalle) ja
+    * jos voi niin muokkaa karttaa niin että palikat liikuneet vasemmalle
+    */
     //vasemalle liikuminen
     public void liikuvasemmalle() {
         if (voikoliikkuavasemmalle()) {
@@ -105,7 +123,13 @@ public class Siirrot {
         }
         return true;
     }
-
+    /* 
+    * tutkii voiko liikua alas (private voikoliikuaalas) ja
+    * jos voi niin muokkaa karttaa niin että palikat liikuneet alas
+    * jos ei vvoi liikkua alas niin tallentaa liikuvien palikoiden kartan 
+    * liikumattomien palikoiden karttaan, luo uuden kartan liikuvien tilalle ja
+    * ja tutkii täyttyykö lopetus ehdot.
+    */
     // voiko liikua oikealle
     public void liikualas() {
         if (voikoliikkualas()) {
@@ -149,16 +173,20 @@ public class Siirrot {
     public void kaannyoikealle() {
         kaanny("");
     }
-
+    /*
+    * etsii tetrispalikan kääntymispiteen kääntää tämän, sovittaa paikalleen ja
+    * jos palikka sopii niin muokkaa liikuvien palikoiden karttaa jos ei niin 
+    * kääntää palikan takaisin ja ei tee mitään. (tähän liittyy myös monta private metodia)
+    */
     // käänny   
     private void kaanny(String suunta) {
         Tetrispalikka palikka = terriskartta.getPalikka();
         int[][] uusikartta = terriskartta.luouusikarrtta();
-        for (int xkartta = 0; xkartta < 10; xkartta++) {
+        for (int xkartta = 0; xkartta < 10; xkartta++) { 
             for (int ykartta = 0; ykartta < 30; ykartta++) {
-                if (terriskartta.getKartta()[xkartta][ykartta] == 2) {
-                    kaanyvalitsesuunta(suunta, palikka);
-                    int[] a = etsikaatymispiste(palikka);
+                if (terriskartta.getKartta()[xkartta][ykartta] == 2) {// etsii käänymispisteet tetris kartasta
+                    kaanyvalitsesuunta(suunta, palikka); //kääntää tetrispalikasa olevan suunnan ja tetrispalikassa olevan matriisin
+                    int[] a = etsikaatymispiste(palikka); // etsii käänymispisteen tetrispalikasta
                     int x = a[0];
                     int y = a[1];
                         
@@ -167,7 +195,7 @@ public class Siirrot {
                     int yalaraja = ykartta - y;
                     int yylaraja = ykartta + (palikka.getY() - y);
 
-                    if (xalaraja < 0 || xylaraja > 9 || yalaraja < 0 || yylaraja > 29) {
+                    if (xalaraja < 0 || xylaraja > 9 || yalaraja < 0 || yylaraja > 29) { // tutkii ylärajat
                         kaanyvalitsesuuntatakas(suunta, palikka);
                         return;
                     } else {
@@ -181,7 +209,7 @@ public class Siirrot {
                             z++;
                             k = 0;
                         }
-                        for (int i = 0; i < 10; i++) {
+                        for (int i = 0; i < 10; i++) { // tutkii ovatko palikat päällekkäin
                             for (int j = 0; j < 30; j++) {
                                 if ((uusikartta[i][j] == 1 || uusikartta[i][j] == 1) && (terriskartta.getVanhatpalkat()[i][j] == 1 || terriskartta.getVanhatpalkat()[i][j] == 2)) {
                                     kaanyvalitsesuuntatakas(suunta, palikka);
@@ -189,7 +217,7 @@ public class Siirrot {
                                 }
                             }
                         }
-                        terriskartta.setKartta(uusikartta);
+                        terriskartta.setKartta(uusikartta); // kun tetris palikan pystyy kääntämään kääntää sen ja korvaa vanhan martiisin uudella.
 
                     }
 

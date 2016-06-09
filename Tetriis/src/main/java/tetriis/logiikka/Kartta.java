@@ -10,30 +10,37 @@ package tetriis.logiikka;
  * @author tiera
  */
 public class Kartta {
-    private int[][] kartta;
-    private int[][] vanhatpalkat;
+    private int[][] liikuvatpalikat;
+    private int[][] liikumattomatpalikat;
     private Tetrispalikka palikka;
-
+    
+    
+    /* 
+    * Pitää tetriksen kartoista huolta, kartta on pallikalle joka vielä liikkuu 
+    * ja vanhatpalikat palikoille jotka jo asettuneet paikoilleen.
+    * Näiden erottelu helpottaa liikuvan palan liikuttelua (muuten kartat tyhjä
+    * matriiseja(10*30). 
+    */
     public Kartta() {
-        kartta = luouusikarrtta();
-        vanhatpalkat = luouusikarrtta();
+        liikuvatpalikat = luouusikarrtta();
+        liikumattomatpalikat = luouusikarrtta();
     }
     
     
     public int[][] getKartta() {
-        return kartta;
+        return liikuvatpalikat;
     }
 
     public int[][] getVanhatpalkat() {
-        return vanhatpalkat;
+        return liikumattomatpalikat;
     }
 
     public void setKartta(int[][] kartta) {
-        this.kartta = kartta;
+        this.liikuvatpalikat = kartta;
     }
 
     public void setVanhatpalkat(int[][] vanhatpalkat) {
-        this.vanhatpalkat = vanhatpalkat;
+        this.liikumattomatpalikat = vanhatpalkat;
     }
 
     public Tetrispalikka getPalikka() {
@@ -41,11 +48,16 @@ public class Kartta {
     }
 
     //molemmant kartat
+    /* 
+    *yhdistää mollemmat kartat grafiikalle
+    *
+    * @return molemmat kartat yhdessä matriisiisa
+    */
     public int[][] molemmatkartat(){
         int[][] uusvanhakartta = luouusikarrtta();
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 30; y++) {
-                if (kartta[x][y] == 1 || vanhatpalkat[x][y] == 1 || kartta[x][y] == 2) { 
+                if (liikuvatpalikat[x][y] == 1 || liikumattomatpalikat[x][y] == 1 || liikuvatpalikat[x][y] == 2) { 
                     uusvanhakartta[x][y] = 1;
                 } else {
                     uusvanhakartta[x][y] = 0;
@@ -56,11 +68,14 @@ public class Kartta {
     }
     
 
-    
+    /*
+    * tallennakartat tallentaa liikumattomien palikoiden karttaan liikuvan kartan
+    * (toisen kartan) tarkistaa myös onko rivi täynnä (tetriksen säännöt)
+    */
     
     public void tallennakartat() { // tallentaa uudenpalikan karttaan
         int[][] uusvanhakartta = molemmatkartat();
-        vanhatpalkat = uusvanhakartta;
+        liikumattomatpalikat = uusvanhakartta;
         onkotaysirivi();
     }
 
@@ -68,14 +83,14 @@ public class Kartta {
         for (int y1 = 0; y1 < 30; y1++) {
             boolean onkorivitaysi = true;
             for (int x = 0; x < 10; x++) {
-                if (vanhatpalkat[x][y1] == 0) {
+                if (liikumattomatpalikat[x][y1] == 0) {
                     onkorivitaysi = false;
                     break;
                 }
             }
             if (onkorivitaysi) {
                 for (int x = 0; x < 10; x++) {
-                     vanhatpalkat[x][y1] = 0;
+                     liikumattomatpalikat[x][y1] = 0;
                 }
             }
         }
@@ -83,17 +98,26 @@ public class Kartta {
         
     }
     
+    /*
+    * lopetus tutkii onko ehdotta täyttynyt joilla sarake on täynnä eikä pysty
+    * laittamaan uutta tetris palkikkaa karttaan.
+    * @return palauttaa ne sarakkeet jotaka on täynnä.
+    */
     public int[] lopetus(){
         int[] taydetsarakkeet = new int[10];
         for (int i = 0; i < 10; i++) {
-            if (vanhatpalkat[i][0] == 1) {
+            if (liikumattomatpalikat[i][0] == 1) {
                 taydetsarakkeet[i] = 1;
             }
         }
         return taydetsarakkeet;
     }
     
-  
+    /*
+    * luo uuden 10*30 kokoisen kartan (matriisiin) joka on tyhjä (pelkkiä nollia)
+    *
+    * @return 10*30 martriisin joka on tyhkä
+    */
     
     public int[][] luouusikarrtta() {// luo uuden kartan
         int[][] kartta2 = new int[10][30];
@@ -105,23 +129,29 @@ public class Kartta {
         return kartta2;
     }
 
+    /*
+    * luo uuden tetrispalikan jonka tallettaa (kääntämistä varten) ja
+    * laittaa sen karttaan.
+    */
     public void uusipalikka() {
-        kartta = luouusikarrtta();
+        liikuvatpalikat = luouusikarrtta();
         palikka = new Tetrispalikka();
         int u[][] = palikka.getTetrispalikka();
         for (int x = 0; x < 2; x++) { //luo kartaan uudenpalikan
             for (int y = 0; y < 5; y++) {
                 if (u[x][y] == 1) {
-                    kartta[x + 4][y] = 1; //scaalaus oikeaksi
+                    liikuvatpalikat[x + 4][y] = 1; //scaalaus oikeaksi
                 } else if (u[x][y] == 2) {
-                    kartta[x + 4][y] = 2; //kääntö piste
+                    liikuvatpalikat[x + 4][y] = 2; //kääntö piste
                 }
             }
         }
         
 
     }
-
+    /*
+    * turha metrodi jolla tutkin toimiiko peli
+    */
     @Override
     public String toString() {
         int [][] k = molemmatkartat();

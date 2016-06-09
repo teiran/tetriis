@@ -18,7 +18,11 @@ public class Tetrispalikka {
     private String suunta;
     private int x;
     private int y;
-
+    /*
+    * luo 2*5 matriisiin joka kuvaa tetris palikkaa.
+    * arpoo tälle sopivista muodoista muodon (private metodi)
+    * antaa tälle palikalle myös suunnan (kaikki palikat aluksi alaspäin)
+    */
     public Tetrispalikka() {
         x = 2;
         y = 5;
@@ -34,7 +38,9 @@ public class Tetrispalikka {
     public int getY() {
         return y;
     }
-    
+    /*
+    * kääntää palikan oikealle (private kaannav() kääntää myös matriisin)
+    */
     
     public void kaannaoikealle(){
         if (suunta.equals("a")) {
@@ -105,7 +111,9 @@ public class Tetrispalikka {
         
     }
     
-    
+    /*
+    * kääntää palikan vasemmalle (private kaannao() kääntää myös matriisin)
+    */   
     public void kaannavasemmalle(){
         if (suunta.equals("o")) {
             kaannav();
@@ -129,7 +137,11 @@ public class Tetrispalikka {
     
     
     
-    
+    /*
+    * luopalikka luo uuden tetrispalikan
+    * 
+    * @return matriisiin 2*5 jossa tettris palikan muoto
+    */
     
     public int[][] luopalikka(){
         int t = (int)(Math.random()*7-1);//keksin jostain myöhemmin paremman random muutujan
@@ -204,7 +216,10 @@ public class Tetrispalikka {
     }
     
     }
-
+    
+    /*
+    * toString oli hyödyllinen tarkistaessa.
+    */
     @Override
     public String toString() {
         String g = "";

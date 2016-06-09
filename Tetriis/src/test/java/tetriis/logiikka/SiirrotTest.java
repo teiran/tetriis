@@ -122,6 +122,7 @@ public class SiirrotTest {
                 }
             }
         }
+        
         y.liikuoikealle();
         int t2 = 0;
         for (int i = 0; i < 30; i++) {
@@ -204,14 +205,12 @@ public class SiirrotTest {
     @Test
     public void testKaannyvasemmalle() {
         System.out.println("kaannyvasemmalle");
-        Siirrot y = new Siirrot();
+        Siirrot y = new Siirrot(); // testaa keskipisteen
         int t = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
                 if (y.kartat()[j][i] == 2) {
-                    if (i > t) {
-                        t = j;
-                    }
+                    t = j;
                 }
             }
         }
@@ -220,9 +219,8 @@ public class SiirrotTest {
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
                 if (y.kartat()[j][i] == 2) {
-                    if (i > t2) {
-                        t2 = j;
-                    }
+                    t2 = j;
+
                 }
             }
         }
