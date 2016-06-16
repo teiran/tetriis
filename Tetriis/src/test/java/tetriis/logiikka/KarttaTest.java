@@ -147,5 +147,7 @@ public class KarttaTest {
         assertEquals(maara, 300);
         
     }
+    
+
 
 }

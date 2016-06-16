@@ -17,51 +17,49 @@ import static org.junit.Assert.*;
  * @author tiera
  */
 public class SiirrotTest {
-    
+
     public SiirrotTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
         Siirrot t = new Siirrot();
         int l = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 30; j++) {
-                if (t.kartat()[i][j]==1||t.kartat()[i][j]==2) {
+                if (t.kartat()[i][j] == 1 || t.kartat()[i][j] == 2) {
                     l++;
                 }
             }
         }
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
         Siirrot t = new Siirrot();
         int l = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 30; j++) {
-                if (t.kartat()[i][j]==1||t.kartat()[i][j]==2) {
+                if (t.kartat()[i][j] == 1 || t.kartat()[i][j] == 2) {
                     l++;
                 }
             }
         }
     }
-    
+
     @Before
     public void setUp() {
-    
+
     }
-    
+
     @After
     public void tearDown() {
-        
+
     }
 
     /**
      * Test of toString method, of class Siirrot.
      */
-   
-
     /**
      * Test of kartat method, of class Siirrot.
      */
@@ -73,13 +71,13 @@ public class SiirrotTest {
         int l = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 30; j++) {
-                if (s.kartat()[i][j]==1||s.kartat()[i][j]==2) {
+                if (s.kartat()[i][j] == 1 || s.kartat()[i][j] == 2) {
                     l++;
                 }
             }
         }
         assertEquals(4, l);
-        
+
     }
 
     /**
@@ -92,7 +90,7 @@ public class SiirrotTest {
         boolean r = true;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 30; j++) {
-                if (h[i][j]!=1||h[i][j]!=2) {
+                if (h[i][j] != 1 || h[i][j] != 2) {
                     r = false;
                     break;
                 }
@@ -102,7 +100,7 @@ public class SiirrotTest {
             }
             r = true;
         }
-        
+
         assertEquals(t.lopetus(), r);
     }
 
@@ -115,26 +113,45 @@ public class SiirrotTest {
         int t = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (j > t) {
                         t = j;
                     }
                 }
             }
         }
-        
+
         y.liikuoikealle();
         int t2 = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (j > t2) {
                         t2 = j;
                     }
                 }
             }
         }
-        assertEquals(t-1, t2);
+        assertEquals(t - 1, t2);
+    }
+
+    @Test
+    public void testLiikuoikealle2() {
+        System.out.println("liikuvasemmalle2");
+        Siirrot y = new Siirrot();
+        for (int i = 0; i < 10; i++) {
+            y.liikuoikealle();
+        }
+        int o = 0;
+        int[][] g = y.kartat();
+        for (int[] is : g) {
+            for (int i : is) {
+                if (i == 1 || i == 2) {
+                    o++;
+                }
+            }
+        }
+        assertEquals(4, o);
     }
 
     /**
@@ -147,7 +164,7 @@ public class SiirrotTest {
         int t = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (j > t) {
                         t = j;
                     }
@@ -158,14 +175,33 @@ public class SiirrotTest {
         int t2 = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (j > t2) {
                         t2 = j;
                     }
                 }
             }
         }
-        assertEquals(t-1, t2);
+        assertEquals(t - 1, t2);
+    }
+
+    @Test
+    public void testLiikuvasemmalle2() {
+        System.out.println("liikuvasemmalle2");
+        Siirrot y = new Siirrot();
+        for (int i = 0; i < 10; i++) {
+            y.liikuvasemmalle();
+        }
+        int o = 0;
+        int[][] g = y.kartat();
+        for (int[] is : g) {
+            for (int i : is) {
+                if (i == 1 || i == 2) {
+                    o++;
+                }
+            }
+        }
+        assertEquals(4, o);
     }
 
     /**
@@ -178,25 +214,45 @@ public class SiirrotTest {
         int t = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (i > t) {
-                        t = j;
+                        t = i;
                     }
                 }
             }
         }
-        y.liikuoikealle();
+        y.liikualas();
         int t2 = 0;
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 10; j++) {
-                if (y.kartat()[j][i] == 1 ||y.kartat()[j][i] == 2) {
+                if (y.kartat()[j][i] == 1 || y.kartat()[j][i] == 2) {
                     if (i > t2) {
-                        t2 = j;
+                        t2 = i;
                     }
                 }
             }
         }
-        assertEquals(t-1, t2);
+        assertEquals(t + 1, t2);
+    }
+
+    @Test
+    public void testLiikualas2() {
+        Siirrot y = new Siirrot();
+        y.liikuoikealle();
+        y.liikuoikealle();
+        for (int i = 0; i < 30; i++) {
+            y.liikualas();
+        }
+        int z = 0;
+        int[][] f = y.kartat();
+        for (int[] is : f) {
+            for (int i : is) {
+                if (i == 1 || i == 2) {
+                    z++;
+                }
+            }
+        }
+        assertEquals(8, z);
     }
 
     /**
@@ -225,6 +281,25 @@ public class SiirrotTest {
             }
         }
         assertEquals(t, t2);
+    }
+
+    @Test
+    public void testKaannyvasemalle2() {
+        Siirrot y = new Siirrot();
+        for (int i = 0; i < 10; i++) {
+            y.liikualas();
+        }
+        int[][] x = y.kartat();
+        for (int i = 0; i < 4; i++) {
+            y.kaannyvasemmalle();
+        }
+        int[][] x2 = y.kartat();
+        
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(x[j][i], x2[j][i]);
+            }
+        }
     }
 
     /**
@@ -258,4 +333,25 @@ public class SiirrotTest {
         assertEquals(t, t2);
     }
     
+    
+    @Test
+    public void testKaannyoikealle2() {
+        Siirrot y = new Siirrot();
+        for (int i = 0; i < 10; i++) {
+            y.liikualas();
+        }
+        int[][] x = y.kartat();
+        for (int i = 0; i < 4; i++) {
+            y.kaannyoikealle();
+        }
+        int[][] x2 = y.kartat();
+        
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(x[j][i], x2[j][i]);
+            }
+        }
+    }
+   
+
 }
