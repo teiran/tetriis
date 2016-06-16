@@ -25,7 +25,12 @@ public class Kaantaminen {
     private int ypalikkakaanyumispiste;
 
     private String suunta;
-
+    /*
+     * 
+     * @param otaa tetris kartan sisäänsä
+     *
+     * luo tetriskartatsta yleisen muutujan kääntämis luokaan
+    */
     public Kaantaminen(Kartta terriskartta) {
         this.terriskartta = terriskartta;
     }

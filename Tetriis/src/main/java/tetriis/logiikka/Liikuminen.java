@@ -13,6 +13,13 @@ public class Liikuminen {
 
     private Kartta terriskartta;
 
+     /*
+     * 
+     * @param otaa tetriskarttan sisäänsä
+     *
+     * luo tetriskartatsta yleisen muutujan liikumista varten luokaan
+    */
+    
     public Liikuminen(Kartta terriskartta) {
         this.terriskartta = terriskartta;
     }
