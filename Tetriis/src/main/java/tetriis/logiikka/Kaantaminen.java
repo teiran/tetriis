@@ -61,7 +61,6 @@ public class Kaantaminen {
         int[][] uusikartta = terriskartta.luouusikarrtta();
         if (xalaraja < 0 || xylaraja > 9 || yalaraja < 0 || yylaraja > 29) { // tutkii ylärajat
             kaanyvalitsesuuntatakas(suunta, palikka);
-            System.out.println("sadadas");
         } else {
             int z = 0;
             int k = 0;
@@ -74,7 +73,6 @@ public class Kaantaminen {
                 k = 0;
             }
             
-            System.out.println("lolololol");
             for (int i = 0; i < 10; i++) { // tutkii ovatko palikat päällekkäin
                 for (int j = 0; j < 30; j++) {
                     if ((uusikartta[i][j] == 1 || uusikartta[i][j] == 1) && (terriskartta.getVanhatpalkat()[i][j] == 1 || terriskartta.getVanhatpalkat()[i][j] == 2)) {

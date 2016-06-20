@@ -22,9 +22,9 @@ class Grafiikka extends JPanel {
         this.kartta = k;
     }
 
-    private void doDrawing(Graphics g) {
+    protected void doDrawing(Graphics g) {
 
-        g2d = (Graphics2D) g;
+        g2d = (Graphics2D)g;
         int x1 = 30;
         int y1 = 30;
         int x2 = 30 * 11;
@@ -57,9 +57,8 @@ class Grafiikka extends JPanel {
                         }
                     }
                     
-                } else {
-                    g2d.clearRect(y1+1, x1+1, 28, 28);
                 }
+                
                 
                 x1 += 30;
                 x2 += 30;
@@ -70,37 +69,9 @@ class Grafiikka extends JPanel {
             y1 += 30;
             y2 += 30;
         }
-
     }
     
-    public void update(int[][] kartta){
-        int x1 = 30;
-        int x2 = 60;
-        int y1 = 30;
-        int y2 = 30;
-        for (int[] is : kartta) {
-            for (int i : is) {
-                if (i == 1) {
-                    for (int j = 0; j < 30; j++) {
-                        for (int k = 0; k < 30; k++) {
-                            g2d.drawLine(y1, x1, y2+k, x2+j);
-                        }
-                    }
-                    
-                } else {
-                    g2d.clearRect(y1+1, x1+1, 28, 28);
-                }
-                
-                x1 += 30;
-                x2 += 30;
 
-            }
-            x1= 30;
-            x2= 30;
-            y1 += 30;
-            y2 += 30;
-        }
-    }
 
     @Override
     public void paintComponent(Graphics g) {

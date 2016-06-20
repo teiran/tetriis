@@ -24,7 +24,7 @@ public class NewMain {
         
         
         LinesEx ex = new LinesEx();
-        SwingUtilities.invokeLater(ex);
+        
         
             
         
