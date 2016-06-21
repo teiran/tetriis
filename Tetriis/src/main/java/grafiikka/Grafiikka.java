@@ -21,6 +21,7 @@ class Grafiikka extends JPanel {
     public void setkartta(int[][] k){
         this.kartta = k;
     }
+    
 
     protected void doDrawing(Graphics g) {
 
@@ -80,5 +81,5 @@ class Grafiikka extends JPanel {
         doDrawing(g);
     }
 
-
+    
 }

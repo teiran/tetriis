@@ -6,6 +6,6 @@ tetriis/logiikka/Tetrispalikka.class
 grafiikka/ruutu.class
 grafiikka/Grafiikka.class
 tetriis/logiikka/Kartta.class
-NappaimistonKuuntelija.class
+grafiikka/NappaimistonKuuntelija.class
 tetriis/logiikka/Liikuminen.class
 tetriis/logiikka/Siirrot.class

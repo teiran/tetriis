@@ -2,10 +2,8 @@ package grafiikka;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.Scanner;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import tetriis.logiikka.Siirrot;
 
@@ -24,8 +22,12 @@ public class LinesEx implements Runnable {
     }
 
     public void update(Container container) {
+        NappaimistonKuuntelija o = new NappaimistonKuuntelija(peli, frame);
+        frame.addKeyListener(o);
+        peli = o.getPeli();
         container.remove(t);
-        addComponents(container);
+        grafiika = new Grafiikka(peli.kartat());
+        container.add(grafiika);
         frame.pack();
         frame.setVisible(true);
     }
@@ -43,6 +45,7 @@ public class LinesEx implements Runnable {
     private void addComponents(Container container) {
         grafiika = new Grafiikka(peli.kartat());
         container.add(grafiika);
+        frame.addKeyListener(new NappaimistonKuuntelija(peli, container));
         grafiika.setFocusable(true);
         container.repaint();
         t = container;
@@ -51,34 +54,6 @@ public class LinesEx implements Runnable {
 
     public JFrame getFrame() {
         return frame;
-    }
-
-    private void loop(Scanner lu) {
-        System.out.println(peli);
-        System.out.println("q,e,a,s,d");
-        String g = lu.nextLine();
-
-        switch (g) {
-            case "q":
-                peli.kaannyvasemmalle();
-                break;
-            case "e":
-                peli.kaannyoikealle();
-                break;
-            case "d":
-                peli.liikuvasemmalle();
-                break;
-            case "s":
-                peli.liikualas();
-                break;
-            case "a":
-                peli.liikuoikealle();
-                break;
-            default:
-                peli.liikualas();
-                break;
-        }
-
     }
 
     @Override
@@ -91,10 +66,9 @@ public class LinesEx implements Runnable {
         addComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
-        
+
         boolean k = peli.lopetus();
         while (k) {
-            loop(lu);
             update(frame.getContentPane());
             k = peli.lopetus();
 

@@ -126,25 +126,77 @@ public class KarttaTest {
         assertEquals(4, h);
         assertEquals(y, 300);
     }
+    
+    @Test
+    public void testTallennakartat2(){
+        Kartta t = new Kartta();
+        int[][] o = t.luouusikarrtta();
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 29) {
+                    o[j][i] = 1;
+                } else if (i == 28 && j > 0){
+                    o[j][i] = 1;
+                }
+            }
+        }
+        t.setVanhatpalkat(o);
+        t.tallennakartat();
+        o = t.molemmatkartat();
+        for (int i = 1; i < 10; i++) {
+            assertEquals(1, o[i][29]); 
+        }
+        
+    }
+    
+    public void testTallennakartta3(){
+        Kartta t = new Kartta();
+        int[][] o = t.luouusikarrtta();
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 29) {
+                    o[j][i] = 1;
+                } else if (i == 28 && j > 0){
+                    o[j][i] = 1;
+                }
+            }
+        }
+        t.setVanhatpalkat(o);
+        t.tallennakartat();
+        o = t.molemmatkartat();
+        for (int i = 1; i < 10; i++) {
+            assertEquals(1, o[i][29]); 
+        }
+    }
 
     /**
      * Test of luouusikarrtta method, of class Kartta.
      */
     @Test
-    public void testLuouusikarrtta() {
+    public void testLuouusikarrtta3() {
         Kartta t = new Kartta();
-        int [][] h = t.luouusikarrtta();
-        int summ = 0;
-        int maara = 0;
-        for (int[] is : h) {
-            for (int i : is) {
-                summ += i;
-                maara++;
+        int[][] o = t.luouusikarrtta();
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (i == 29) {
+                    o[j][i] = 1;
+                } else if (i == 28){
+                    o[j][i] = 1;
+                } else if (i == 27 &&(j ==0|| j==5)) {
+                    o[j][i] = 1;
+                }
             }
-            
         }
-        assertEquals(summ, 0);
-        assertEquals(maara, 300);
+        t.setVanhatpalkat(o);
+        t.tallennakartat();
+        o = t.molemmatkartat();
+        for (int i = 0; i < 10; i++) {
+            if (i== 0 || i == 5) {
+                assertEquals(1, o[i][29]); 
+            } else{
+                assertEquals(0, o[i][29]); 
+            }
+        }
         
     }
     
