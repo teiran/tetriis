@@ -30,7 +30,6 @@ class Grafiikka extends JPanel {
         int y1 = 30;
         int x2 = 30 * 11;
         int y2 = 30;
-        int r = 0;
         for (int i = 0; i < 31; i++) {
             g2d.drawLine(x1, y1, x2, y2);
             y1 += 30;

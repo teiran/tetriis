@@ -49,20 +49,19 @@ public class Siirrot {
         return true;
     }
 
-    public void liikuvasemmalle(){
+    public void liikuvasemmalle() {
         Liikuminen vasen = new Liikuminen(terriskartta);
         vasen.liikuvasemmalle();
         terriskartta = vasen.getTerriskartta();
     }
-    
-    
-    public void liikuoikealle(){
+
+    public void liikuoikealle() {
         Liikuminen oikea = new Liikuminen(terriskartta);
         oikea.liikuoikealle();
         terriskartta = oikea.getTerriskartta();
     }
-   
-    public void liikualas(){
+
+    public void liikualas() {
         Liikuminen alas = new Liikuminen(terriskartta);
         alas.liikualas();
         terriskartta = alas.getTerriskartta();
@@ -76,10 +75,8 @@ public class Siirrot {
 
     public void kaannyoikealle() {
         Kaantaminen k = new Kaantaminen(terriskartta);
-        terriskartta  = k.kaanny("");
-        
+        terriskartta = k.kaanny("");
+
     }
 
-    
-    
 }

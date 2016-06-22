@@ -1,5 +1,11 @@
-#Thu Jun 16 21:38:12 EEST 2016
-/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Liikuminen.java=1466098927000
-/home/tiera/tetriis/Tetriis/src/main/java/NewMain.java=1466091928000
-/home/tiera/tetriis/Tetriis/src/main/java/grafiikka/LinesEx.java=1466092980000
+#Wed Jun 22 18:00:05 EEST 2016
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Siirrot.java=1466604802000
+/home/tiera/tetriis/Tetriis/src/main/java/grafiikka/LinesEx.java=1466544535000
+/home/tiera/tetriis/Tetriis/src/main/java/NewMain.java=1466456230000
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Tetrispalikka.java=1466607007000
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Kaantaminen.java=1466604897000
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Onkorivitaysi.java=1466607587000
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Kartta.java=1466607587000
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Liikuminen.java=1466604801000
 configuration*?=7299B6822CE7F0E37E023BDB65B64FB08A1FA53F
+/home/tiera/tetriis/Tetriis/src/main/java/tetriis/logiikka/Luotetrispalikka.java=1466607126000

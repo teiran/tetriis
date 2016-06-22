@@ -1,11 +1,11 @@
 NewMain.class
-tetriis/logiikka/logiikka.class
 tetriis/logiikka/Kaantaminen.class
 grafiikka/LinesEx.class
 tetriis/logiikka/Tetrispalikka.class
-grafiikka/ruutu.class
 grafiikka/Grafiikka.class
+tetriis/logiikka/Onkorivitaysi.class
 tetriis/logiikka/Kartta.class
 grafiikka/NappaimistonKuuntelija.class
 tetriis/logiikka/Liikuminen.class
+tetriis/logiikka/Luotetrispalikka.class
 tetriis/logiikka/Siirrot.class

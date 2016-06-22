@@ -13,13 +13,12 @@ public class Liikuminen {
 
     private Kartta terriskartta;
 
-     /*
+    /*
      * 
      * @param otaa tetriskarttan sisäänsä
      *
      * luo tetriskartatsta yleisen muutujan liikumista varten luokaan
-    */
-    
+     */
     public Liikuminen(Kartta terriskartta) {
         this.terriskartta = terriskartta;
     }
@@ -87,8 +86,6 @@ public class Liikuminen {
         }
     }
 
-    
-    
     private boolean voikoliikkuavasemmalle() {
         for (int x = 9; x >= 0; x--) { // käy alhaalta ylöspäin palikat läpi ja tutkii voidaanko liikkua 
             for (int y = 29; y >= 0; y--) {
@@ -104,7 +101,6 @@ public class Liikuminen {
         return true;
     }
 
-    
     /* 
     * tutkii voiko liikua alas (private voikoliikuaalas) ja
     * jos voi niin muokkaa karttaa niin että palikat liikuneet alas
@@ -112,7 +108,6 @@ public class Liikuminen {
     * liikumattomien palikoiden karttaan, luo uuden kartan liikuvien tilalle ja
     * ja tutkii täyttyykö lopetus ehdot.
      */
-
     public void liikualas() {
         if (voikoliikkualas()) {
             int[][] kartta2 = terriskartta.luouusikarrtta();

@@ -19,6 +19,7 @@ public class NappaimistonKuuntelija implements KeyListener {
     public NappaimistonKuuntelija(Siirrot peli, Component component) {
         this.peli = peli;
         this.component = component;
+        
     }
 
     public Siirrot getPeli() {
@@ -28,9 +29,9 @@ public class NappaimistonKuuntelija implements KeyListener {
     public Component getComponent() {
         return component;
     }
+        
     
     
-
     
 
     
@@ -62,7 +63,7 @@ public class NappaimistonKuuntelija implements KeyListener {
                 break;
     }
         
-       
+    component.repaint();
 
    
 

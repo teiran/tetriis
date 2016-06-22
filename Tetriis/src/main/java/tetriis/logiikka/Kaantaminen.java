@@ -25,12 +25,13 @@ public class Kaantaminen {
     private int ypalikkakaanyumispiste;
 
     private String suunta;
+
     /*
      * 
      * @param otaa tetris kartan sisäänsä
      *
      * luo tetriskartatsta yleisen muutujan kääntämis luokaan
-    */
+     */
     public Kaantaminen(Kartta terriskartta) {
         this.terriskartta = terriskartta;
     }
@@ -41,12 +42,11 @@ public class Kaantaminen {
     * kääntää palikan takaisin ja ei tee mitään. (tähän liittyy myös monta private metodia)
      */
     // käänny  
-    
     public Kartta kaanny(String suunta) {
         this.suunta = suunta;
         Tetrispalikka palikka = terriskartta.getPalikka();
         etsikaanytmispistekartta();
-        if (xkarttakaantymispite != -1 && ykarttakaanymispiste != -1) {// etsii käänymispisteet tetris kartasta
+        if (xkarttakaantymispite != -1 && ykarttakaanymispiste != -1) { // etsii käänymispisteet tetris kartasta
             kaanyvalitsesuunta(suunta, palikka); //kääntää tetrispalikasa olevan suunnan ja tetrispalikassa olevan matriisin
             etsikaatymispiste(palikka); // etsii käänymispisteen tetrispalikasta
             ylajaalrajat(palikka);
@@ -72,7 +72,7 @@ public class Kaantaminen {
                 z++;
                 k = 0;
             }
-            
+
             for (int i = 0; i < 10; i++) { // tutkii ovatko palikat päällekkäin
                 for (int j = 0; j < 30; j++) {
                     if ((uusikartta[i][j] == 1 || uusikartta[i][j] == 1) && (terriskartta.getVanhatpalkat()[i][j] == 1 || terriskartta.getVanhatpalkat()[i][j] == 2)) {
@@ -82,11 +82,10 @@ public class Kaantaminen {
                     }
                 }
             }
-            
+
             terriskartta.setKartta(uusikartta); // kun tetris palikan pystyy kääntämään kääntää sen ja korvaa vanhan martiisin uudella.
         }
     }
-    
 
     private void etsikaanytmispistekartta() {
         for (int xkartta1 = 0; xkartta1 < 10; xkartta1++) {

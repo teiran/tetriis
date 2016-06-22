@@ -2,7 +2,6 @@ package grafiikka;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetriis.logiikka.Siirrot;
@@ -22,9 +21,6 @@ public class LinesEx implements Runnable {
     }
 
     public void update(Container container) {
-        NappaimistonKuuntelija o = new NappaimistonKuuntelija(peli, frame);
-        frame.addKeyListener(o);
-        peli = o.getPeli();
         container.remove(t);
         grafiika = new Grafiikka(peli.kartat());
         container.add(grafiika);
@@ -49,6 +45,7 @@ public class LinesEx implements Runnable {
         grafiika.setFocusable(true);
         container.repaint();
         t = container;
+        frame.addKeyListener(new NappaimistonKuuntelija(peli, container));
 
     }
 
@@ -58,7 +55,6 @@ public class LinesEx implements Runnable {
 
     @Override
     public void run() {
-        Scanner lu = new Scanner(System.in);
         frame = new JFrame("Tetris");
         frame.setPreferredSize(new Dimension(50 * 10 + 100, 50 * 30 + 100));
         frame.setLocationRelativeTo(null);
@@ -70,7 +66,7 @@ public class LinesEx implements Runnable {
         boolean k = peli.lopetus();
         while (k) {
             update(frame.getContentPane());
-            k = peli.lopetus();
+            k = peli.lopetus(); 
 
         }
     }
