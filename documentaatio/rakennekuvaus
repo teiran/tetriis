@@ -1,6 +1,1 @@
-#Tetripeli
 
-Peli koostuu pääasiassa logiigasta jossa tetris kartta on kuvattu matriisina (taulukkona) johon kohdistetaan erilaisia käskyjä.
-Pelissä on kaksi taulukkoa nykyisin liikeellä oleva tetrispalikka ja vanhat tetris palikat. Kun luodaan uusi tetris palikka 
-(joka sekin taulukko) niin yhdisteään nämä taulukot toisiinsa vanhojen palikoidentaulukkon tilalle. Taulukko kuvataan myös suoraan 
-Grafikkaa ja jokaiselle taulukossa tapahtuvalle muutokselle on oma metodinsa.
