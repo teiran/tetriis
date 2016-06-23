@@ -5,3 +5,4 @@ Tarkoituksena on tehdä yksinpelattava tetrispeli joka toimii kuin tetris yleens
 ##### Documentaatio
  ![kuvaus](https://github.com/teiran/tetriis/blob/master/documentaatio/kuvaustetris.md)
  ![tuntikirjanpoto](https://github.com/teiran/tetriis/blob/master/documentaatio/tuntukirjanpito.md)
+ 
