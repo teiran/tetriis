@@ -34,6 +34,10 @@ public class Siirrot {
         return terriskartta.molemmatkartat();
     }
 
+    public int pisteet() {
+        return terriskartta.getPisteet();
+    }
+
     /*
     * lopetus ehdon getteri
      */
@@ -44,9 +48,9 @@ public class Siirrot {
     private boolean lopetus2() {
         int[] h = terriskartta.lopetus();
         if (h[4] == 1 || h[5] == 1) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public void liikuvasemmalle() {

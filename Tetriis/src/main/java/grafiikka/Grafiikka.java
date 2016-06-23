@@ -8,24 +8,23 @@ package grafiikka;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
-
+import tetriis.logiikka.Siirrot;
 
 class Grafiikka extends JPanel {
 
-    private int[][] kartta;
+    private Siirrot peli;
     private Graphics2D g2d;
+    private int[][] kartta;
 
-    public Grafiikka(int[][] kartta) {
-        this.kartta = kartta;
+    public Grafiikka(Siirrot peli) {
+        this.peli = peli;
+        kartta = peli.kartat();
+
     }
-    public void setkartta(int[][] k){
-        this.kartta = k;
-    }
-    
 
     protected void doDrawing(Graphics g) {
 
-        g2d = (Graphics2D)g;
+        g2d = (Graphics2D) g;
         int x1 = 30;
         int y1 = 30;
         int x2 = 30 * 11;
@@ -35,6 +34,7 @@ class Grafiikka extends JPanel {
             y1 += 30;
             y2 += 30;
         }
+
         x1 = 30;
         x2 = 30;
         y1 = 30;
@@ -44,8 +44,9 @@ class Grafiikka extends JPanel {
             x1 += 30;
             x2 += 30;
         }
+
         x1 = 30;
-        x2 = 60;
+        x2 = 30;
         y1 = 30;
         y2 = 30;
         for (int[] is : kartta) {
@@ -53,25 +54,24 @@ class Grafiikka extends JPanel {
                 if (i == 1) {
                     for (int j = 0; j < 30; j++) {
                         for (int k = 0; k < 30; k++) {
-                            g2d.drawLine(y1, x1, y2+k, x2+j);
+                            g2d.drawLine(y1, x1, y2 + k, x2 + j);
                         }
                     }
-                    
+
                 }
-                
-                
+
                 x1 += 30;
                 x2 += 30;
 
             }
-            x1= 30;
-            x2= 30;
+            x1 = 30;
+            x2 = 30;
             y1 += 30;
             y2 += 30;
         }
-    }
-    
 
+        g2d.drawString(peli.pisteet() + "", 0, 400);
+    }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -80,5 +80,4 @@ class Grafiikka extends JPanel {
         doDrawing(g);
     }
 
-    
 }

@@ -12,14 +12,21 @@ package tetriis.logiikka;
 public class Onkorivitaysi {
 
     private int[][] liikumattomatpalikat;
+    private int pisteet;
+    private int monikerta;
 
     public Onkorivitaysi(int[][] kartat) {
         this.liikumattomatpalikat = kartat;
         onkotaysirivi();
+
     }
 
     public int[][] getLiikumattomatpalikat() {
         return liikumattomatpalikat;
+    }
+
+    public int getPisteet() {
+        return pisteet;
     }
 
     private void onkotaysirivi() {
@@ -34,7 +41,10 @@ public class Onkorivitaysi {
             if (onkorivitaysi) {
                 for (int x = 0; x < 10; x++) {
                     liikumattomatpalikat[x][y1] = 0;
+
                 }
+                pisteet += 10 * monikerta;
+                monikerta++;
                 onkotaysirivi2();
             }
         }
@@ -52,6 +62,7 @@ public class Onkorivitaysi {
                     if (liikumattomatpalikat[x][y] == 1) { //löydetään ensimmäinen ruutu joka sisältää tetris palikan
                         t2 = false;
                         ylaraja = y;
+
                         break;
                     }
                 }

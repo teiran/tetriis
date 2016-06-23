@@ -44,16 +44,12 @@ public class Tetrispalikka {
     public void kaannaoikealle() {
         if (suunta.equals("a")) {
             kaannao();
-            suunta = "o";
         } else if (suunta.equals("o")) {
             kaannao();
-            suunta = "y";
         } else if (suunta.equals("y")) {
             kaannao();
-            suunta = "v";
         } else {
             kaannao();
-            suunta = "a";
         }
     }
 
@@ -65,7 +61,7 @@ public class Tetrispalikka {
                 int[][] k = new int[x][y];
                 for (int x1 = 0; x1 < 2; x1++) {
                     for (int y1 = 0; y1 < 5; y1++) {
-                        k[y1][x1] = tetrispalikka[x1][y1];
+                        k[4 - y1][x1] = tetrispalikka[x1][y1];
                     }
                 }
                 tetrispalikka = k;
@@ -77,7 +73,7 @@ public class Tetrispalikka {
                 int[][] k1 = new int[x][y];
                 for (int x1 = 0; x1 < 2; x1++) {
                     for (int y1 = 0; y1 < 5; y1++) {
-                        k1[x1][4 - y1] = tetrispalikka[y1][x1];
+                        k1[1 - x1][y1] = tetrispalikka[y1][x1];
                     }
                 }
                 tetrispalikka = k1;
@@ -89,7 +85,7 @@ public class Tetrispalikka {
                 int[][] k2 = new int[x][y];
                 for (int x1 = 0; x1 < 2; x1++) {
                     for (int y1 = 0; y1 < 5; y1++) {
-                        k2[y1][x1] = tetrispalikka[x1][y1];
+                        k2[4 - y1][x1] = tetrispalikka[x1][y1];
                     }
                 }
                 tetrispalikka = k2;
@@ -101,7 +97,7 @@ public class Tetrispalikka {
                 int[][] k3 = new int[x][y];
                 for (int x1 = 0; x1 < 2; x1++) {
                     for (int y1 = 0; y1 < 5; y1++) {
-                        k3[x1][4 - y1] = tetrispalikka[y1][x1];
+                        k3[1 - x1][y1] = tetrispalikka[y1][x1];
                     }
                 }
                 tetrispalikka = k3;

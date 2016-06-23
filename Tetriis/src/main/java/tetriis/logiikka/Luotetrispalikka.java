@@ -26,7 +26,7 @@ public class Luotetrispalikka {
     }
 
     public int[][] luopalikka() {
-        int t = (int) (Math.random() * 7 - 1); //keksin jostain myöhemmin paremman random muutujan
+        int t = randomWithRange(0, 6); //keksin jostain myöhemmin paremman random muutujan
         int[][] k = new int[x][y];
         for (int x1 = 0; x1 < x; x1++) {
             for (int y1 = 0; y1 < y; y1++) {
@@ -36,6 +36,11 @@ public class Luotetrispalikka {
         luoPalikka2(t, k);
 
         return k;
+    }
+
+    private int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
     }
 
     private void luoPalikka2(int x, int[][] k) {

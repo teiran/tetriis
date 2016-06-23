@@ -14,6 +14,7 @@ public class Kartta {
     private int[][] liikuvatpalikat;
     private int[][] liikumattomatpalikat;
     private Tetrispalikka palikka;
+    private int pisteet;
 
     /* 
     * Pitää tetriksen kartoista huolta, kartta on pallikalle joka vielä liikkuu 
@@ -24,10 +25,15 @@ public class Kartta {
     public Kartta() {
         liikuvatpalikat = luouusikarrtta();
         liikumattomatpalikat = luouusikarrtta();
+        pisteet = 0;
     }
 
     public int[][] getKartta() {
         return liikuvatpalikat;
+    }
+
+    public int getPisteet() {
+        return pisteet;
     }
 
     public int[][] getVanhatpalkat() {
@@ -75,6 +81,7 @@ public class Kartta {
         int[][] uusvanhakartta = molemmatkartat();
         Onkorivitaysi k = new Onkorivitaysi(uusvanhakartta);
         liikumattomatpalikat = k.getLiikumattomatpalikat();
+        pisteet += k.getPisteet();
 
     }
 

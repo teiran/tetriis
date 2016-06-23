@@ -5,79 +5,89 @@ package grafiikka;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.Timer;
 import tetriis.logiikka.Siirrot;
 
-public class NappaimistonKuuntelija implements KeyListener {
-    private Siirrot peli;
-    private Component component;
+public class NappaimistonKuuntelija implements KeyListener  {
 
-    public NappaimistonKuuntelija(Siirrot peli, Component component) {
+    private Siirrot peli;
+    private Grafiikka container;
+    private LinesEx k;
+
+    public NappaimistonKuuntelija(Siirrot peli, Grafiikka container, LinesEx k) {
         this.peli = peli;
-        this.component = component;
-        
+        this.container = container;
+        this.k = k;
+
+    }
+
+    public Grafiikka getContainer() {
+        return container;
     }
 
     public Siirrot getPeli() {
         return peli;
     }
 
-    public Component getComponent() {
-        return component;
-    }
-        
-    
-    
-    
-
-    
-
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println(peli);
-        System.out.println("q,e,a,s,d");
         int g = e.getKeyChar();
 
+//        if (g == KeyEvent.VK_PAGE_DOWN) {
+//            peli.kaannyvasemmalle();
+//        } else if (g == KeyEvent.VK_DELETE) {
+//            peli.kaannyoikealle();
+//        } else if (g == KeyEvent.VK_LEFT) {
+//            peli.liikuvasemmalle();
+//        } else if (g == KeyEvent.VK_DOWN) {
+//            peli.liikualas();
+//        } else if (g == KeyEvent.VK_RIGHT) {
+//            peli.liikuoikealle();
+//        } else {
+//            peli.liikualas();
+//        } 
         switch (g) {
-            case KeyEvent.VK_Q:
+            case 'q':
                 peli.kaannyvasemmalle();
                 break;
-            case KeyEvent.VK_E:
+            case 'e':
                 peli.kaannyoikealle();
                 break;
-            case KeyEvent.VK_D:
-                peli.liikuvasemmalle();
+            case 'a':
+                peli.liikuoikealle();
                 break;
-            case KeyEvent.VK_S:
+            case 's':
                 peli.liikualas();
                 break;
-            case KeyEvent.VK_A:
-                peli.liikuoikealle();
+            case 'd':
+                peli.liikuvasemmalle();
                 break;
             default:
                 peli.liikualas();
                 break;
+        }
+
+        container.setFocusable(true);
+        container.repaint();
+        container.setVisible(true);
+        container = new Grafiikka(peli);
+        k.update(peli);
+
     }
-        
-    component.repaint();
-
-   
-
-  
-}
 
     @Override
     public void keyTyped(KeyEvent e) {
-         
-   }
+
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
+
     }
-    
+
 }

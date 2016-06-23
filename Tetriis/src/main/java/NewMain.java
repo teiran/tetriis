@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.util.Scanner;
 import tetriis.logiikka.Siirrot;
 import grafiikka.LinesEx;
 import javax.swing.SwingUtilities;
@@ -24,7 +23,7 @@ public class NewMain {
         
         
         LinesEx ex = new LinesEx();
-        
+        SwingUtilities.invokeLater(ex);
         
             
         
